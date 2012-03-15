@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 1.7//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/1.6/template-install.dtd">
 <extension version="2.5" type="template" client="site">
-	<name>OneWeb</name>
-	<creationDate>December 15th, 2011</creationDate>
-	<author>Seth Warburton</author>
-	<authorEmail>seth@internet-inspired.com</authorEmail>
-	<authorUrl>http://internet-inspired.com</authorUrl>
-	<copyright>Copyright (C) 2011 Seth Warburton | Internet Inspired! All rights reserved.</copyright>
+	<name>KWD_Joomla_OneWeb</name>
+	<creationDate>March 14th 2012</creationDate>
+	<author>Chris Jones-Gill</author>
+	<authorEmail>chris.jones-gill@kisswebdesign.co.uk</authorEmail>
+	<authorUrl>http://kisswebdesign.co.uk</authorUrl>
+	<copyright>Copyright (C) 2012 Chris Jones-Gill | KISS Web Design | All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
-	<version>0.6</version>	
+	<version>0.1</version>	
 	<description><![CDATA[
-	<p>One Web! is a responsive, 'mobile first' HTML5 template from <a href="http://internet-inspired.com">Internet Inspired!</a>.</p><p>It incorporates the hard work of others (proper coders, unlike me), I just rolled it all together and added some spit and polish to it. Notably, this template takes the HTML5 goodness and awesome polyfills from the <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> of Paul Irish, the mobile first logic and sexy typographic basics from <a href="http://www.stuffandnonsense.co.uk/projects/320andup/">320 and up</a> by Andy Clarke, some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' <a href="http://construct-framework.com/">Construct Framework</a> and a fluid <a href="http://cssgrid.net/">1140px Grid</a> grid from Andy Taylor.</p><p>What's left is the work of Seth Warburton @nternetinspired</p>
+	<p>This is a responsive, 'mobile first' HTML5 template from <a href="http://kisswebdesign.co.uk">KISS Web Design</a>.</p><p>It incorporates the hard work of many talented people. It was forked from <a href="https://github.com/nternetinspired/OneWeb">OneWeb Project on GitHub</a>.</p><p>I have taken that a great baseline for building this template, adding my own bits along the way.</p><p>Thanks goes to those who went before me:<br />Notably, this template takes the HTML5 goodness and awesome polyfills from the <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> of Paul Irish.<br />The mobile first logic and sexy typographic basics from <a href="http://www.stuffandnonsense.co.uk/projects/320andup/">320 and up</a> by Andy Clarke.<br />Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' <a href="http://construct-framework.com/">Construct Framework</a>.<br /> The fluid <a href="http://cssgrid.net/">1140px Grid</a> grid from Andy Taylor.<br />And especially the work of Seth Warburton @nternetinspired <a href="http://internet-inspired.com">Internet Inspired!</a> for pulling it all together, adding his own flair and creating the original OneWeb template.</p>
 	]]></description>
 		
 	<files>
         <filename>favicon.ico</filename>
         <filename>index.php</filename>
+        <filename>template_preview.png</filename>
+        <filename>template_thumbnail.png</filename>
         <filename>templateDetails.xml</filename>
 		<folder>css</folder>
 		<folder>fonts</folder>
@@ -31,6 +33,7 @@
 		<position>search</position>
 		<position>menu</position>
 		<position>breadcrumbs</position>
+		<position>bigtop</position>
 		<position>banner1</position>
 		<position>banner2</position>
 		<position>above1</position>		
@@ -68,7 +71,12 @@
 					<option value="0">No</option>
 				</field>
 				<field type="spacer" default=" " />
-			<field name="setGeneratorTag" type="text" default="Internet Inspired! - Creative Joomla! templates - http://internet-inspired.com" label="Generator Meta Tag" description="Customise the generator meta tag output by your template." size="85" />
+				<field name="debug" type="radio" default="0" label="Debug mode?" description="Set screen output to put all active module positions into a 1px black box with style declarations shown, plus a list of module status and columns assigned per module position">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field type="spacer" default=" " />
+			<field name="setGeneratorTag" type="text" default="KISS Web Design - Joomla! Template" label="Generator Meta Tag" description="Customise the generator meta tag output by your template." size="85" />
 			<field name="analytics" type="text" default="UA-XXXXX-X" label="Google Analytics ID" description="Change UA-XXXXX-X to be your site's ID" size="15" />
 			</fieldset>				
 		
@@ -101,8 +109,9 @@
 				<field name="googleWebFontTargets3" type="text" default="" label="Google Web Font Targets" description="A comma seperated list of the html elements, CSS IDs, and classes to apply the selected Google Web Font to. If targeting the body, be sure to set the Body Font Family to None Selected." size="50" />								
 			</fieldset>
 			
-			<fieldset name="Logo Row Module Widths" label="Logo Row Module Widths">
-                <field name="logo" type="list" default="three" label="logo width" >
+			<fieldset name="Logo Upload and Logo Row Module Widths" label="Logo Upload and Logo Row Module Widths">
+				<field name="SiteLogo" type="media" hide_default="1" default="templates/kwd_joomla_oneweb/img/logo/kwd-joomla-oneweb.png" label="Logo" description="Select or upload a logo, max useable size is 449x226."/>
+                <field name="logo" type="list" default="five" label="logo width" >
 					<option value="one">one</option>
 					<option value="two">two</option>
 					<option value="three">three</option>
@@ -117,7 +126,7 @@
 					<option value="twelve">twelve</option>
 				</field>
 							
-			<field name="tagline" type="list" default="six" label="tagline width" >
+			<field name="tagline" type="list" default="four" label="tagline width" >
 					<option value="one">one</option>
 					<option value="two">two</option>
 					<option value="three">three</option>
@@ -182,6 +191,10 @@
 			</fieldset> 
 			
 			<fieldset name="Above Row Module Widths" label="Above Row Module Widths">
+				<field name="CalculateAbove" type="radio" default="1" label="Auto Calculate columns required?" description="Calculate the number of columns required by dividing the number of active positions by the available columns. This will override anything you enter in this section.">
+                			<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
                 <field name="above1" type="list" default="three" label="above 1 width" >
 					<option value="one">one</option>
 					<option value="two">two</option>
@@ -241,6 +254,10 @@
             </fieldset>	
 			
 			<fieldset name="Main Row Module Widths" label="Main Row Module Widths">
+				<field name="CalculateMain" type="radio" default="1" label="Auto Calculate columns required?" description="Calculate the number of columns required by dividing the number of active positions by the available columns. This will override anything you enter in this section.">
+                			<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
                 <field name="left" type="list" default="three" label="left width" >
 					<option value="one">one</option>
 					<option value="two">two</option>
@@ -286,6 +303,10 @@
 			</fieldset>	
 	
 			<fieldset name="Below Row Module Widths" label="Below Row Module Widths">
+				<field name="CalculateBelow" type="radio" default="1" label="Auto Calculate columns required?" description="Calculate the number of columns required by dividing the number of active positions by the available columns. This will override anything you enter in this section.">
+                			<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
                 <field name="below1" type="list" default="three" label="below 1 width" >
 					<option value="one">one</option>
 					<option value="two">two</option>
@@ -345,6 +366,10 @@
             </fieldset>	
 			
 			<fieldset name="bottom Row Module Widths" label="bottom Row Module Widths">
+				<field name="CalculateBottom" type="radio" default="1" label="Auto Calculate columns required?" description="Calculate the number of columns required by dividing the number of active positions by the available columns. This will override anything you enter in this section.">
+                			<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
                 <field name="bottom1" type="list" default="three" label="bottom 1 width" >
 					<option value="one">one</option>
 					<option value="two">two</option>
@@ -404,6 +429,10 @@
             </fieldset>
 	
 			<fieldset name="Footer Row Module Widths" label="Footer Row Module Widths">
+				<field name="CalculateFooter" type="radio" default="1" label="Auto Calculate columns required?" description="Calculate the number of columns required by dividing the number of active positions by the available columns. This will override anything you enter in this section.">
+                			<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
                 <field name="footer1" type="list" default="three" label="footer 1 width" >
 					<option value="one">one</option>
 					<option value="two">two</option>
