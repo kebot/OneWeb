@@ -8,7 +8,7 @@
 	<authorUrl>http://kisswebdesign.co.uk</authorUrl>
 	<copyright>Copyright (C) 2012 Chris Jones-Gill | KISS Web Design | All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
-	<version>0.1</version>	
+	<version>0.2</version>	
 	<description><![CDATA[
 	<p>This is a responsive, 'mobile first' HTML5 template from <a href="http://kisswebdesign.co.uk">KISS Web Design</a>.</p><p>It incorporates the hard work of many talented people. It was forked from <a href="https://github.com/nternetinspired/OneWeb">OneWeb Project on GitHub</a>.</p><p>I have taken that a great baseline for building this template, adding my own bits along the way.</p><p>Thanks goes to those who went before me:<br />Notably, this template takes the HTML5 goodness and awesome polyfills from the <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> of Paul Irish.<br />The mobile first logic and sexy typographic basics from <a href="http://www.stuffandnonsense.co.uk/projects/320andup/">320 and up</a> by Andy Clarke.<br />Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' <a href="http://construct-framework.com/">Construct Framework</a>.<br /> The fluid <a href="http://cssgrid.net/">1140px Grid</a> grid from Andy Taylor.<br />And especially the work of Seth Warburton @nternetinspired <a href="http://internet-inspired.com">Internet Inspired!</a> for pulling it all together, adding his own flair and creating the original OneWeb template.</p>
 	]]></description>
@@ -107,6 +107,12 @@
 				<field type="spacer" default=" " />
 				<field name="googleWebFont3" type="googlewebfont" default="" label="Google Web Font" description="The Google Web font to be applied to the designated targets below. Visit http://code.google.com/webfonts for more information." />										
 				<field name="googleWebFontTargets3" type="text" default="" label="Google Web Font Targets" description="A comma seperated list of the html elements, CSS IDs, and classes to apply the selected Google Web Font to. If targeting the body, be sure to set the Body Font Family to None Selected." size="50" />								
+				<field type="spacer" default=" " />
+				<field name="SocialDarkGlyphFont" type="radio" default="0" label="Include Social Dark Glyph Font?" description="Add the CSS for including the social dark glyph font. See kwd_joomla_oneweb/img/social-dark.png for the glyphs">
+                	<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				
 			</fieldset>
 			
 			<fieldset name="Logo Upload and Logo Row Module Widths" label="Logo Upload and Logo Row Module Widths">

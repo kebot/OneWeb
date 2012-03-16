@@ -334,6 +334,9 @@ $doc->addCustomTag('<link href="'.$template.'/img/large/apple-touch-icon.png" re
 // Style sheets
 $doc->addStyleSheet($template.'/css/style.css');
 
+if ($this->params->get('SocialDarkGlyphFont')) {
+	$doc->addStyleSheet($template.'/css/social-dark.css');
+}
 // Metas
 $doc->setMetaData( 'HandheldFriendly', 'True' );
 $doc->setMetaData( 'MobileOptimized', '320' );
