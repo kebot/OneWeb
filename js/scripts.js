@@ -23,8 +23,10 @@ function menuSwitch(width) {
 	if (width > 750){
 		menu.removeClass('visuallyhidden');
 					}
-		else menu.addClass('visuallyhidden');
-							}
+	else 	{
+		menu.addClass('visuallyhidden');
+			}
+}
 menuSwitch();
 
 /* Chris Coyier's elegant screensize test http://css-tricks.com/resolution-specific-stylesheets/ */
