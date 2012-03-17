@@ -112,11 +112,14 @@
                 	<option value="1">Yes</option>
 					<option value="0">No</option>
 				</field>
-				<field name="SocialLightGlyphFont" type="radio" default="0" label="Include Social Light Glyph Font?" description="Add the CSS for including the social dark glyph font. See kwd_joomla_oneweb/img/social-light.png for the glyphs">
+				<field name="SocialLightGlyphFont" type="radio" default="0" label="Include Social Light Glyph Font?" description="Add the CSS for including the social light glyph font. See kwd_joomla_oneweb/img/social-light.png for the glyphs">
                 	<option value="1">Yes</option>
 					<option value="0">No</option>
 				</field>
-				
+				<field name="GeneralWebsiteGlyphFont" type="radio" default="0" label="Include General Website Glyph Font?" description="Add the CSS for including the general website glyph font. See kwd_joomla_oneweb/img/general-website.png for the glyphs">
+                	<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
 			</fieldset>
 			
 			<fieldset name="Logo Upload and Logo Row Module Widths" label="Logo Upload and Logo Row Module Widths">

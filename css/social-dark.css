@@ -58,17 +58,17 @@ Pinterest           		7                   content: '7';
  *          want to use the icon(s) on.
  *          Use the psuedo elements :before and/or :after to display the
  *          icon(s) before or after the content of the element.
- *          Test the implementation using the div.showallglyphs element
- *          on your webpage.
+ *          Test the implementation using the div.showallsocialdarkglyphs
+ *          element on your webpage.
  *          The glyph icons can be styled exactly the same as standard 
  *          font stylings.
 /* =====================================================================*/
 
-div.showallglyphs {
+div.showallsocialdarkglyphs {
 	padding: 20px;
 }
 
-div.showallglyphs:after {
+div.showallsocialdarkglyphs:after {
 	font-size: 4.5em;
     font-family: "KISSWebDesignSocialDark";
     content: "! \22  $ % & \27  ( ) * + , - . / 0 1 2 3 4 5 6 7";

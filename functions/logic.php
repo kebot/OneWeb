@@ -340,6 +340,9 @@ if ($this->params->get('SocialDarkGlyphFont')) {
 if ($this->params->get('SocialLightGlyphFont')) {
 	$doc->addStyleSheet($template.'/css/social-light.css');
 }
+if ($this->params->get('GeneralWebsiteGlyphFont')) {
+	$doc->addStyleSheet($template.'/css/general-website.css');
+}
 // Metas
 $doc->setMetaData( 'HandheldFriendly', 'True' );
 $doc->setMetaData( 'MobileOptimized', '320' );
