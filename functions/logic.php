@@ -153,7 +153,7 @@ if ($this->params->get('CalculateAbove')) {
 	// Divide the total columns by the number of active modules
 	// Ensures the modules always fill the available width
 	// Overrides the values specified in the template style
-	$AboveCols = int_to_words(12/($above1 + $above2 + $above3 + $above4));
+	if(($above1 + $above2 + $above3 + $above4) != 0) {$AboveCols = int_to_words(12/($above1 + $above2 + $above3 + $above4));} else {$AboveCols = 0;}
 	$above1Cols = $this->params->set('above1', $AboveCols);
 	$above2Cols = $this->params->set('above2', $AboveCols);
 	$above3Cols = $this->params->set('above3', $AboveCols);
@@ -191,7 +191,7 @@ if ($this->params->get('CalculateBelow')) {
 	// Divide the total columns by the number of active modules
 	// Ensures the modules always fill the available width
 	// Overrides the values specified in the template style
-	$BelowCols = int_to_words(12/($below1 + $below2 + $below3 + $below4));
+	if(($below1 + $below2 + $below3 + $below4) != 0) {$BelowCols = int_to_words(12/($below1 + $below2 + $below3 + $below4));} else {$BelowCols = 0;}
 	$below1Cols = $this->params->set('below1', $BelowCols);
 	$below2Cols = $this->params->set('below2', $BelowCols);
 	$below3Cols = $this->params->set('below3', $BelowCols);
@@ -209,7 +209,7 @@ if ($this->params->get('CalculateBottom')) {
 	// Divide the total columns by the number of active modules
 	// Ensures the modules always fill the available width
 	// Overrides the values specified in the template style
-	$BottomCols = int_to_words(12/($bottom1 + $bottom2 + $bottom3 + $bottom4));
+	if(($bottom1 + $bottom2 + $bottom3 + $bottom4) != 0) {$BottomCols = int_to_words(12/($bottom1 + $bottom2 + $bottom3 + $bottom4));} else {$BottomCols = 0;}
 	$bottom1Cols = $this->params->set('bottom1', $BottomCols);
 	$bottom2Cols = $this->params->set('bottom2', $BottomCols);
 	$bottom3Cols = $this->params->set('bottom3', $BottomCols);
@@ -227,7 +227,7 @@ if ($this->params->get('CalculateFooter')) {
 	// Divide the total columns by the number of active modules
 	// Ensures the modules always fill the available width
 	// Overrides the values specified in the template style
-	$FooterCols = int_to_words(12/($footer1 + $footer2 + $footer3 + $footer4));
+	if(($footer1 + $footer2 + $footer3 + $footer4) != 0) {$FooterCols = int_to_words(12/($footer1 + $footer2 + $footer3 + $footer4));} else {$FooterCols = 0;}
 	$footer1Cols = $this->params->set('footer1', $FooterCols);
 	$footer2Cols = $this->params->set('footer2', $FooterCols);
 	$footer3Cols = $this->params->set('footer3', $FooterCols);
