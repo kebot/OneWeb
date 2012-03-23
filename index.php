@@ -376,6 +376,8 @@ if ( ! Modernizr.mq('(min-width:0)') ) {
 				echo "<br />search = " . $search;
 				echo "<br />tagline = " . $tagline;
 				echo "<br />breadcrumbs = " . $breadcrumbs;
+				
+				echo "<br /><br />BigTop = " . $bigtop;
 
 				echo "<br /><br />banner1 = " . $banner1;
 				echo "<br />banner2 = " . $banner2;

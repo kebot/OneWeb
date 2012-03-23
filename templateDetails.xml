@@ -71,7 +71,7 @@
 					<option value="0">No</option>
 				</field>
 				<field type="spacer" default=" " />
-				<field name="debug" type="radio" default="0" label="Debug mode?" description="Set screen output to put all active module positions into a 1px black box with style declarations shown, plus a list of module status and columns assigned per module position">
+				<field name="debug" type="radio" default="0" label="Debug mode?" description="Set screen output to put all active module positions into a 1px black box, plus a list of module status and columns assigned per module position">
 					<option value="1">Yes</option>
 					<option value="0">No</option>
 				</field>
