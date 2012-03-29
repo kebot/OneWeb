@@ -1,154 +1,160 @@
-About This Project
-==================
+<h1>About This Project</h1>
 
-This is a responsive, 'mobile first' HTML5 template from KISS Web Design  
-  
-It was forked from [https://github.com/nternetinspired/OneWeb](https://github.com/nternetinspired/OneWeb "Github link to original oneweb project")
-I have taken that a great baseline for building this template, adding my own bits along the way.  
-  
-It incorporates the hard work of many talented people:  
-  
-Notably, this template takes the HTML5 goodness and awesome polyfills from the HTML5 Boilerplate of Paul Irish. [http://html5boilerplate.com](http://html5boilerplate.com "Link to the html5boilerplate site")  
-The mobile first logic and sexy typographic basics from 320 and up by Andy Clarke. [http://www.stuffandnonsense.co.uk/projects/320andup/](http://www.stuffandnonsense.co.uk/projects/320andup/ "Link to the 320andup site")  
-Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' Construct Framework. [http://construct-framework.com}(http://construct-framework.com "Link to the Construct Framework site")  
-The fluid 1140px Grid from Andy Taylor.[http://cssgrid.net](http://cssgrid.net "Link to the fluid 1140 grid site")  
-And especially the work of Seth Warburton at Internet Inspired! [@nternetinspired](https://twitter.com/nternetinspired "Twitter link for Seth Warburton") for pulling it all together, adding his own flair and creating the original OneWeb template. [http://internet-inspired.com](http://internet-inspired.com "Link to the internet-inspired site")  
-  
-Contact info  
-============  
-  
- * Via github:		
-	+ [https://github.com/KISS-Web-Design](https://github.com/KISS-Web-Design "Link to KISS Web Design Github page")  
- * Via website:	
-	+ [http://kisswebdesign.co.uk](http://kisswebdesign.co.uk/contact2.php "Link to the KISS Web Design contact page")  
- * Via Twitter:	
-	+ [@KissWebDesign](https://twitter.com/KissWebDesign "Twitter link for KISS Web Design")  
- * Via Facebook:	
-	+ [http://www.facebook.com/pages/Kiss-Web-Design-Ltd](http://www.facebook.com/pages/Kiss-Web-Design-Ltd/185807241443994 "Link to the KISS Web Design Facebook Page")  
-  
-Quick start  
-===========  
-  
- * Clone the git repo
-	+ git clone git://github.com/KISS-Web-Design/KWD\_Joomla\_OneWeb.git
- * Or download it
-	+ [https://github.com/KISS-Web-Design/KWD\_Joomla\_OneWeb/zipball/master](https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/zipball/master "Download link for the project on Github")
-  
-User Information
-================
+<p>This is a responsive, 'mobile first' HTML5 template from KISS Web Design  </p>
 
- * This is a starter template, it is meant to be a baseline for Joomla!2.5 templates to be designed with.
- * You will need Joomla!2.5 installed on a server before you can use this starter template.
- * You can install this starter template using the Joomla!2.5 Extension Manager, using the zip file included with this project.
- * If you have trouble getting this starter template installed, then this project is not for you. It assumes an intermediate level of knowledge of Joomla!, the Joomla! templating system, HTML5, CSS3, PHP and Javascript.
- * If you have a project in mind that you see being built using this starter template, but do not have the required skills/knowledge to make it happen - please feel free to contact me for a quote.
-  
-FEATURES
-========
-  
- * Fully responsive scalable web design
- * Cross-platform smartphone support
- * Cross-platform tablet/pad support
- * Includes Modernizr http://www.modernizr.com
- * Includes respond.js https://github.com/scottjehl/Respond
- * Includes Selectivizr http://selectivizr.com/
- * 3 selectable fonts from google web fonts http://www.google.com/webfonts
- * 3 selectable icon fonts - general purpose, social networking light, social networking dark
- * Default font-size is 62.5%  - makes it the equivalent of 10px, therefore using font sizes in rem units gives an easy conversion to px sizes, ie 1.0rem = 10px, 1.4rem = 14px, etc.
- * Logo upload and select
- * Selectable module widths, or auto-set based on the active modules
- * Media queries for device screen sizes - 480, 600, 768, 992, 1382
- * Media query for high density mobile displays (eg iPhone 4) - min-device-pixel-ratio: 1.5
- * Small screensize optimization of the top menu (inserts a button to toggle the viewable menu on/off)
- * Selectable debug mode - Set screen output to put all active module positions into a 1px black box, plus a list of module status and columns assigned per module position at the bottom of the page
- * The following module positions are available:
-	+ Top row
-		- Logo (reserved for the logo by default)
-		- Tagline
-		- Search
-	+ Row 2
-		- Menu
-	+ Row 3
-		- Breadcrumbs
-	+ Row 4
-		- Big Top (full width, ideal for sliders, etc)
-	+ Row 5
-		- Banner 1
-		- Banner 2
-	+ Row 6
-		- Above 1
-		- Above 2
-		- Above 3
-		- Above 4
-	+ Row 7
-		- Left
-		- MAIN CONTENT
-		- Right
-	+ Row 8
-		- Below 1
-		- Below 2
-		- Below 3
-		- Below 4
-	+ Row 9
-		- Bottom 1
-		- Bottom 2
-		- Bottom 3
-		- Bottom 4
-	+ Row 10
-		- Footer 1
-		- Footer 2
-		- Footer 3
-		- Footer 4
-	+ Row 11
-		- Copyright
-		- Module position / activation Debug information (if selected)
- * The template, in debug mode, showing all the glyph fonts looks like this:  
-  
-![Template image in debug mode showing glyph fonts](http://kisswebdesign.co.uk/images/kwd_joomla_oneweb/kwd_joomla_oneweb_template_debug_preview.png "Template preview")
-  
-Contributing
-============
-  
- * If you want to contribute please feel free to do so. There are many ways to help:
- 	+ Raise an issue on github [https://github.com/KISS-Web-Design/KWD\_Joomla\_OneWeb/issues](https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/issues "Link to the issues page of the project on Github")
- 	+ Sending pull requests for bug fixes or new features and improvements.
- 	+ Send me a message via github [https://github.com/KISS-Web-Design](https://github.com/KISS-Web-Design "Link to the KISS Web Design page on Github") with ideas/improvements/etc.		
-  
-Project Information
-===================
-  
- * Source: 
-	+ [https://github.com/KISS-Web-Design/KWD\_Joomla\_OneWeb](https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb "Link to the project page on Github")
- * Live demo:
-	+ [http://j25.stempsite.co.uk](http://j25.stempsite.co.uk "Link to a live demo of the template")
-  
-Licences
-========
-  
-Given the variety of sources there are many applicable licences for this Joomla! Template.  
-Some parts are availabele under dual licences.  
-Some parts are public domain, and as such have no licence restrictions.
+<p>It was forked from <a href="https://github.com/nternetinspired/OneWeb" title="Github link to original oneweb project">https://github.com/nternetinspired/OneWeb</a>
+I have taken that a great baseline for building this template, adding my own bits along the way.  </p>
 
- * GNU/GPL v2 or later:
-	- [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html "Lnk to the GNU/GPL v2 licence site")
-	- functions/googlewebfont.php
-	- functions/logic.php
-	- html/* [all files]
-	- js/libs/respond.min.js
-	- js/plugins.js
-	- index.php
- * The MIT License (MIT):
-	- [http://opensource.org/licenses/mit-license.php](http://opensource.org/licenses/mit-license.php "Link to the MIT licence site")
-	- js/libs/modernizr.2.5.3.custom.js
-	- js/libs/respond.min.js
-	- js/libs/selectivizr.min.js
-	- js/plugins.js
- * The BSD Licence (BSD):
-	- [http://opensource.org/licenses/BSD-3-Clause](http://opensource.org/licenses/BSD-3-Clause "Link to the BSD licence site")
-	- js/libs/modernizr.2.5.3.custom.js
- * Creative Commons Attribution-ShareAlike 3.0 Unported:
-	- [http://creativecommons.org/licenses/by-sa/3.0/](http://creativecommons.org/licenses/by-sa/3.0/ "Link to the Creative Commons licence site")
-	- fonts/* [all files]
-	- css/general-website.css
-	- css/social-dark.css
-	- css/social-light.css
+<p>It incorporates the hard work of many talented people:  </p>
+
+<p>Notably, this template takes the HTML5 goodness and awesome polyfills from the HTML5 Boilerplate of Paul Irish. <a href="http://html5boilerplate.com" title="Link to the html5boilerplate site">http://html5boilerplate.com</a> <br />
+The mobile first logic and sexy typographic basics from 320 and up by Andy Clarke. <a href="http://www.stuffandnonsense.co.uk/projects/320andup/" title="Link to the 320andup site">http://www.stuffandnonsense.co.uk/projects/320andup/</a> <br />
+Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' Construct Framework. [http://construct-framework.com}(http://construct-framework.com "Link to the Construct Framework site") <br />
+The fluid 1140px Grid from Andy Taylor.<a href="http://cssgrid.net" title="Link to the fluid 1140 grid site">http://cssgrid.net</a> <br />
+And especially the work of Seth Warburton at Internet Inspired! <a href="https://twitter.com/nternetinspired" title="Twitter link for Seth Warburton">@nternetinspired</a> for pulling it all together, adding his own flair and creating the original OneWeb template. <a href="http://internet-inspired.com" title="Link to the internet-inspired site">http://internet-inspired.com</a>  </p>
+
+<h1>Contact info</h1>
+
+<ul>
+<li>Via github: <br />
+<ul><li><a href="https://github.com/KISS-Web-Design" title="Link to KISS Web Design Github page">https://github.com/KISS-Web-Design</a>  </li></ul></li>
+<li>Via website: 
+<ul><li><a href="http://kisswebdesign.co.uk/contact2.php" title="Link to the KISS Web Design contact page">http://kisswebdesign.co.uk</a>  </li></ul></li>
+<li>Via Twitter: 
+<ul><li><a href="https://twitter.com/KissWebDesign" title="Twitter link for KISS Web Design">@KissWebDesign</a>  </li></ul></li>
+<li>Via Facebook: <br />
+<ul><li><a href="http://www.facebook.com/pages/Kiss-Web-Design-Ltd/185807241443994" title="Link to the KISS Web Design Facebook Page">http://www.facebook.com/pages/Kiss-Web-Design-Ltd</a>  </li></ul></li>
+</ul>
+
+<h1>Quick start</h1>
+
+<ul>
+<li>Clone the git repo
+<ul><li>git clone git://github.com/KISS-Web-Design/KWD_Joomla_OneWeb.git</li></ul></li>
+<li>Or download it
+<ul><li><a href="https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/zipball/master" title="Download link for the project on Github">https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/zipball/master</a></li></ul></li>
+</ul>
+
+<h1>User Information</h1>
+
+<ul>
+<li>This is a starter template, it is meant to be a baseline for Joomla!2.5 templates to be designed with.</li>
+<li>You will need Joomla!2.5 installed on a server before you can use this starter template.</li>
+<li>You can install this starter template using the Joomla!2.5 Extension Manager, using the zip file included with this project.</li>
+<li>If you have trouble getting this starter template installed, then this project is not for you. It assumes an intermediate level of knowledge of Joomla!, the Joomla! templating system, HTML5, CSS3, PHP and Javascript.</li>
+<li>If you have a project in mind that you see being built using this starter template, but do not have the required skills/knowledge to make it happen - please feel free to contact me for a quote.</li>
+</ul>
+
+<h1>FEATURES</h1>
+
+<ul>
+<li>Fully responsive scalable web design</li>
+<li>Cross-platform smartphone support</li>
+<li>Cross-platform tablet/pad support</li>
+<li>Includes Modernizr http://www.modernizr.com</li>
+<li>Includes respond.js https://github.com/scottjehl/Respond</li>
+<li>Includes Selectivizr http://selectivizr.com/</li>
+<li>3 selectable fonts from google web fonts http://www.google.com/webfonts</li>
+<li>3 selectable icon fonts - general purpose, social networking light, social networking dark</li>
+<li>Default font-size is 62.5%  - makes it the equivalent of 10px, therefore using font sizes in rem units gives an easy conversion to px sizes, ie 1.0rem = 10px, 1.4rem = 14px, etc.</li>
+<li>Logo upload and select</li>
+<li>Selectable module widths, or auto-set based on the active modules</li>
+<li>Media queries for device screen sizes - 480, 600, 768, 992, 1382</li>
+<li>Media query for high density mobile displays (eg iPhone 4) - min-device-pixel-ratio: 1.5</li>
+<li>Small screensize optimization of the top menu (inserts a button to toggle the viewable menu on/off)</li>
+<li>Selectable debug mode - Set screen output to put all active module positions into a 1px black box, plus a list of module status and columns assigned per module position at the bottom of the page</li>
+<li>The following module positions are available:
+<ul><li>Top row
+<ul><li>Logo (reserved for the logo by default)</li>
+<li>Tagline</li>
+<li>Search</li></ul></li>
+<li>Row 2
+<ul><li>Menu</li></ul></li>
+<li>Row 3
+<ul><li>Breadcrumbs</li></ul></li>
+<li>Row 4
+<ul><li>Big Top (full width, ideal for sliders, etc)</li></ul></li>
+<li>Row 5
+<ul><li>Banner 1</li>
+<li>Banner 2</li></ul></li>
+<li>Row 6
+<ul><li>Above 1</li>
+<li>Above 2</li>
+<li>Above 3</li>
+<li>Above 4</li></ul></li>
+<li>Row 7
+<ul><li>Left</li>
+<li>MAIN CONTENT</li>
+<li>Right</li></ul></li>
+<li>Row 8
+<ul><li>Below 1</li>
+<li>Below 2</li>
+<li>Below 3</li>
+<li>Below 4</li></ul></li>
+<li>Row 9
+<ul><li>Bottom 1</li>
+<li>Bottom 2</li>
+<li>Bottom 3</li>
+<li>Bottom 4</li></ul></li>
+<li>Row 10
+<ul><li>Footer 1</li>
+<li>Footer 2</li>
+<li>Footer 3</li>
+<li>Footer 4</li></ul></li>
+<li>Row 11
+<ul><li>Copyright</li>
+<li>Module position / activation Debug information (if selected)</li></ul></li></ul></li>
+<li>The template, in debug mode, showing all the glyph fonts looks like this:  </li>
+</ul>
+
+<p><img src="http://kisswebdesign.co.uk/images/kwd_joomla_oneweb/kwd_joomla_oneweb_template_debug_preview.png" alt="Template image in debug mode showing glyph fonts" title="Template preview" /></p>
+
+<h1>Contributing</h1>
+
+<ul>
+<li>If you want to contribute please feel free to do so. There are many ways to help:
+<ul><li>Raise an issue on github <a href="https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/issues" title="Link to the issues page of the project on Github">https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/issues</a></li>
+<li>Sending pull requests for bug fixes or new features and improvements.</li>
+<li>Send me a message via github <a href="https://github.com/KISS-Web-Design" title="Link to the KISS Web Design page on Github">https://github.com/KISS-Web-Design</a> with ideas/improvements/etc.       </li></ul></li>
+</ul>
+
+<h1>Project Information</h1>
+
+<ul>
+<li>Source: 
+<ul><li><a href="https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb" title="Link to the project page on Github">https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb</a></li></ul></li>
+<li>Live demo:
+<ul><li><a href="http://j25.stempsite.co.uk" title="Link to a live demo of the template">http://j25.stempsite.co.uk</a></li></ul></li>
+</ul>
+
+<h1>Licences</h1>
+
+<p>Given the variety of sources there are many applicable licences for this Joomla! Template. <br />
+Some parts are availabele under dual licences. <br />
+Some parts are public domain, and as such have no licence restrictions.</p>
+
+<ul>
+<li>GNU/GPL v2 or later:
+<ul><li><a href="http://www.gnu.org/licenses/gpl-2.0.html" title="Lnk to the GNU/GPL v2 licence site">http://www.gnu.org/licenses/gpl-2.0.html</a></li>
+<li>functions/googlewebfont.php</li>
+<li>functions/logic.php</li>
+<li>html/* [all files]</li>
+<li>js/libs/respond.min.js</li>
+<li>js/plugins.js</li>
+<li>index.php</li></ul></li>
+<li>The MIT License (MIT):
+<ul><li><a href="http://opensource.org/licenses/mit-license.php" title="Link to the MIT licence site">http://opensource.org/licenses/mit-license.php</a></li>
+<li>js/libs/modernizr.2.5.3.custom.js</li>
+<li>js/libs/respond.min.js</li>
+<li>js/libs/selectivizr.min.js</li>
+<li>js/plugins.js</li></ul></li>
+<li>The BSD Licence (BSD):
+<ul><li><a href="http://opensource.org/licenses/BSD-3-Clause" title="Link to the BSD licence site">http://opensource.org/licenses/BSD-3-Clause</a></li>
+<li>js/libs/modernizr.2.5.3.custom.js</li></ul></li>
+<li>Creative Commons Attribution-ShareAlike 3.0 Unported:
+<ul><li><a href="http://creativecommons.org/licenses/by-sa/3.0/" title="Link to the Creative Commons licence site">http://creativecommons.org/licenses/by-sa/3.0/</a></li>
+<li>fonts/* [all files]</li>
+<li>css/general-website.css</li>
+<li>css/social-dark.css</li>
+<li>css/social-light.css</li></ul></li>
+</ul>
