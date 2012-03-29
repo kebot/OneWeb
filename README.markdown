@@ -104,7 +104,7 @@ FEATURES
 		- Module position / activation Debug information (if selected)
  * The template, in debug mode, showing all the glyph fonts looks like this:  
   
-![Template image in debug mode showing glyph fonts](img/kwd_joomla_oneweb_template_debug_preview.png "Template preview")
+![Template image in debug mode showing glyph fonts](https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/raw/master/img/kwd_joomla_oneweb_template_debug_preview.png "Template preview")
   
 Contributing
 ============
