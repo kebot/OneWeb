@@ -8,11 +8,16 @@ I have taken that a great baseline for building this template, adding my own bit
   
 It incorporates the hard work of many talented people:  
   
-Notably, this template takes the HTML5 goodness and awesome polyfills from the HTML5 Boilerplate of Paul Irish. [http://html5boilerplate.com](http://html5boilerplate.com "Link to the html5boilerplate site")  
-The mobile first logic and sexy typographic basics from 320 and up by Andy Clarke. [http://www.stuffandnonsense.co.uk/projects/320andup/](http://www.stuffandnonsense.co.uk/projects/320andup/ "Link to the 320andup site")  
-Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' Construct Framework. [http://construct-framework.com}(http://construct-framework.com "Link to the Construct Framework site")  
-The fluid 1140px Grid from Andy Taylor.[http://cssgrid.net](http://cssgrid.net "Link to the fluid 1140 grid site")  
-And especially the work of Seth Warburton at Internet Inspired! [@nternetinspired](https://twitter.com/nternetinspired "Twitter link for Seth Warburton") for pulling it all together, adding his own flair and creating the original OneWeb template. [http://internet-inspired.com](http://internet-inspired.com "Link to the internet-inspired site")  
+Notably, this template takes the HTML5 goodness and awesome polyfills from the HTML5 Boilerplate of Paul Irish.
+ * [http://html5boilerplate.com](http://html5boilerplate.com "Link to the html5boilerplate site")  
+The mobile first logic and sexy typographic basics from 320 and up by Andy Clarke. 
+ * [http://www.stuffandnonsense.co.uk/projects/320andup/](http://www.stuffandnonsense.co.uk/projects/320andup/ "Link to the 320andup site")  
+Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' Construct Framework. 
+ * [http://construct-framework.com](http://construct-framework.com "Link to the Construct Framework site")  
+The fluid 1140px Grid from Andy Taylor.
+ * [http://cssgrid.net](http://cssgrid.net "Link to the fluid 1140 grid site")  
+And especially the work of Seth Warburton at Internet Inspired! [@nternetinspired](https://twitter.com/nternetinspired "Twitter link for Seth Warburton") for pulling it all together, adding his own flair and creating the original OneWeb template. 
+ * [http://internet-inspired.com](http://internet-inspired.com "Link to the internet-inspired site")  
   
 Contact info  
 ============  
