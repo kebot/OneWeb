@@ -34,6 +34,31 @@ if ( ! Modernizr.mq('(min-width:0)') ) {
   document.write('<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/libs/respond.min.js"></s'+'cript>');
 }
 </script>
+<?php
+// The following script calls only apply to IE7 and IE8, IE6 goes tits-up if you try and use it on that browser
+// so we don't bother with IE6 for the nice image resizing, and just let it use the default image
+?>
+<!--[if (lt IE 9) & (gt IE 6) & (!IEMobile)]>
+<script>
+addLoadEvent(function() {
+	imgSizer.collate();
+});
+
+function addLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+</script>
+<![endif]-->
 </head>
 <body class="<?php echo htmlspecialchars($bodyFontFamily); ?> clearfix">
 <div id="logoRow">
@@ -462,8 +487,12 @@ if ( ! Modernizr.mq('(min-width:0)') ) {
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/plugins.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/mylibs/helper.js"></script>
 
-<!--[if (lt IE 9) & (!IEMobile)]>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/libs/imgsizer.js"></script>
+<?php
+// The following script calls only apply to IE7 and IE8, IE6 goes tits-up if you try and use it on that browser
+// so we don't bother with IE6 for the nice image resizing, and just let it use the default image
+?>
+<!--[if (lt IE 9) & (gt IE 6) & (!IEMobile)]>
+<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/mylibs/imgSizer.js"></script>
 <![endif]-->
 
 <script>

@@ -157,3 +157,4 @@ Some parts are public domain, and as such have no licence restrictions.
 	- css/general-website.css
 	- css/social-dark.css
 	- css/social-light.css
+	- js/mylibs/imgSizer.js
