@@ -18,6 +18,14 @@
         <filename>index.php</filename>
         <filename>template_preview.png</filename>
         <filename>template_thumbnail.png</filename>
+        <filename>adaptive-images.php</filename>
+        <filename>ai.htaccess</filename>
+        <filename>ai.htaccess.README.txt</filename>
+        <filename>ai-instructions.htm</filename>
+        <filename>BSD-licence.txt</filename>
+        <filename>CreativeCommons-by-sa-3.0.txt</filename>
+        <filename>gpl-2.0.txt</filename>
+        <filename>mit-licence.txt</filename>
         <filename>templateDetails.xml</filename>
 		<folder>css</folder>
 		<folder>fonts</folder>
@@ -67,6 +75,11 @@
 				</field>
 				<field type="spacer" default=" " />
 				<field name="jQuery" type="radio" default="1" label="Load jQuery?" description="Load the latest, minified, version of jQuery from Google?">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field type="spacer" default=" " />
+				<field name="adaptiveImages" type="radio" default="0" label="Use Adaptive Images?" description="Use the Adaptive Images function to resize all images dependent on the resolution of the visitors device?">
 					<option value="1">Yes</option>
 					<option value="0">No</option>
 				</field>

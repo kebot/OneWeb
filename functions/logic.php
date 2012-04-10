@@ -91,6 +91,7 @@ $nwords = array( "zero", "one", "two", "three", "four", "five", "six", "seven",
 // Define shortcuts for template parameters
 $loadMoo 				= $this->params->get('loadMoo');
 $jQuery 				= $this->params->get('jQuery');
+$adaptiveImages			= $this->params->get('adaptiveImages');
 $setGeneratorTag		= $this->params->get('setGeneratorTag');
 $analytics 				= $this->params->get('analytics');
 // Get the site logo filename
@@ -281,6 +282,23 @@ $googleWebFontTargets2	= $this->params->get('googleWebFontTargets2');
 $googleWebFont3			= $this->params->get('googleWebFont3');
 $googleWebFontSize3		= $this->params->get('googleWebFontSize3');
 $googleWebFontTargets3	= $this->params->get('googleWebFontTargets3');
+
+/* ========================================================================= */
+/* Adaptive Images check & setup                                             */
+/* ========================================================================= */
+
+if($adaptiveImages) {
+	if(!file_exists("adaptive-images.php")) {
+		$aiFile = $template . "adaptive-images.php";
+		copy($aiFile, "adaptive-images.php");
+		// check the .htaccess file next, add the code if required
+	}
+}
+/* ========================================================================= */
+/* End of Adaptive Images check & setup                                      */
+/* ========================================================================= */
+
+
 
 // Change generator tag
 $this->setGenerator($setGeneratorTag);

@@ -28,6 +28,14 @@ $debug = $this->params->get('debug');
 <!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
+<?php
+// Cookie setting script for Adaptive Images: requires you to read the ai.htaccess.README.txt file and do as it says or it won't work.
+// Adaptive images creates a cached version of all images specific to the screen resolution of the viewers device.
+// Set a cookie for screen resolution. If javascript is disabled then the images are either smallest res. for mobiles, or full res. for everything else.
+// Do it first to give it the best chance of being set when an <img> tag is encountered.
+// Read the ai-instructions.htm file for more details.
+?>
+<script>document.cookie='resolution='+(Math.max(screen.width,screen.height)*("devicePixelRatio" in window ? devicePixelRatio : 1))+'; path=/';</script>
 <jdoc:include type="head" />
 <script>
 if ( ! Modernizr.mq('(min-width:0)') ) {
