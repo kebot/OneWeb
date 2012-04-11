@@ -1,15 +1,17 @@
 <?php defined('_JEXEC') or die;
 /* =====================================================================
- * Template:	KWD_Joomla_OneWeb :: for Joomla! 2.5
- * Author: 	Chris Jones-Gill - KISS Web Design
- * Version: 	0.1
- * Created: 	March 2012
- * Copyright:	KISS Web Design - (C) 2012 - All rights reserved
+ * Template:		KWD_Joomla_OneWeb :: for Joomla! 2.5
+ * Author: 			Chris Jones-Gill - KISS Web Design
+ * Version: 		0.2
+ * Created: 		March 2012
+ * This Version:	April 2012
+ * Copyright:		KISS Web Design - (C) 2012 - All rights reserved
  * License:	GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
  * Sources:	Forked from https://github.com/nternetinspired/OneWeb 12/3/2012
  *   		http://html5boilerplate.com/
  * 			http://stuffandnonsense.co.uk/projects/320andup/
  * 			http://construct-framework.com/
+ * 			https://github.com/MattWilcox/Adaptive-Images
 /* ===================================================================== */
 
 // Load template logic
@@ -29,11 +31,10 @@ $debug = $this->params->get('debug');
 <!--[if (gte IE 9)|(gt IEMobile 7)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <?php
-// Cookie setting script for Adaptive Images: requires you to read the ai.htaccess.README.txt file and do as it says or it won't work.
+// Cookie setting script for Adaptive Images:
 // Adaptive images creates a cached version of all images specific to the screen resolution of the viewers device.
-// Set a cookie for screen resolution. If javascript is disabled then the images are either smallest res. for mobiles, or full res. for everything else.
+// Set a cookie for screen resolution. If javascript is disabled then the images are either lowest res. for mobiles, or highest res. for everything else.
 // Do it first to give it the best chance of being set when an <img> tag is encountered.
-// Read the ai-instructions.htm file for more details.
 ?>
 <script>document.cookie='resolution='+(Math.max(screen.width,screen.height)*("devicePixelRatio" in window ? devicePixelRatio : 1))+'; path=/';</script>
 <jdoc:include type="head" />
@@ -44,7 +45,7 @@ if ( ! Modernizr.mq('(min-width:0)') ) {
 </script>
 <?php
 // The following script calls only apply to IE7 and IE8, IE6 goes tits-up if you try and use it on that browser
-// so we don't bother with IE6 for the nice image resizing, and just let it use the default image
+// so we don't bother with IE6 for the nice dynamic image resizing, and just let it use the default image
 ?>
 <!--[if (lt IE 9) & (gt IE 6) & (!IEMobile)]>
 <script>

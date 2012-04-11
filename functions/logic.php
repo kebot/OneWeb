@@ -1,13 +1,15 @@
 <?php defined('_JEXEC') or die;
 /* =====================================================================
- * Template:	KWD_Joomla_OneWeb :: for Joomla! 2.5
- * Author: 	Chris Jones-Gill - KISS Web Design
- * Version: 	0.1
- * Created: 	March 2012
- * Copyright:	KISS Web Design - (C) 2012 - All rights reserved
+ * Template:		KWD_Joomla_OneWeb :: for Joomla! 2.5
+ * Author: 			Chris Jones-Gill - KISS Web Design
+ * Version: 		0.2
+ * Created: 		March 2012
+ * This Version:	April 2012
+ * Copyright:		KISS Web Design - (C) 2012 - All rights reserved
  * License:	GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
  * Sources:	Forked from https://github.com/nternetinspired/OneWeb 12/3/2012
  * 			http://construct-framework.com/
+ * 			https://github.com/MattWilcox/Adaptive-Images
 /* ===================================================================== */
 
 /* =====================================================================
@@ -286,12 +288,49 @@ $googleWebFontTargets3	= $this->params->get('googleWebFontTargets3');
 /* ========================================================================= */
 /* Adaptive Images check & setup                                             */
 /* ========================================================================= */
-
-if($adaptiveImages) {
-	if(!file_exists("adaptive-images.php")) {
-		$aiFile = $template . "adaptive-images.php";
-		copy($aiFile, "adaptive-images.php");
-		// check the .htaccess file next, add the code if required
+if(!isset($aiDone)) {
+	$aiDubug = "!isset($aiDone)\n";
+	if($adaptiveImages) {
+		$aiDubug .= "!$adaptiveImages\n";
+		global $aiDone; // define a global flag so that this only runs once
+		$aiDone = TRUE;
+		if(preg_match("/Apache/", phpinfo())) { // this only works on Apache servers
+		$aiDubug .= "preg_match('/Apache/', phpinfo())\n";
+			if(!file_exists("adaptive-images.php")) {
+				$aiDubug .= "!file_exists('adaptive-images.php')\n";
+				$aiFile = $template . "adaptive-images.php";
+				$aiHtaccessFile = $template . "ai.htaccess.joomla2.5";
+				copy($aiFile, "adaptive-images.php");
+				$aiDubug .= "copy($aiFile, 'adaptive-images.php')\n";
+				if(!file_exists(".htaccess")) {
+					$aiDubug .= "!file_exists('.htaccess')\n";
+					//chmod htaccess.txt to 644
+					// check for htaccess.txt, even though it should be there we have to check
+					if(file_exists("htaccess.txt")) {
+						copy("htaccess.txt", ".htaccess"); // Joomla installs htaccess.txt by default, with Joomla SEF stuff in it
+						file_put_contents(".htaccess", file_get_contents($aiHtaccessFile), FILE_APPEND); // Add the Adaptive Images rules to the end of the file							
+					} else {
+						$newHtaccessContents = "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n";
+						file_put_contents(".htaccess", $newHtaccessContents); // create a new .htaccess file, no default Joomla bits in it
+					}
+				} else {
+					// file_exists(".htaccess")
+					$htaccessContents = file_get_contents(".htaccess"); // TODO add some error traps too
+					if(!preg_match("/Adaptive-Images/", $htaccessContents)) {
+						if(!preg_match("/RewriteEngine On/", $htaccessContents)) {
+							$newHtaccessContents = "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n";
+							file_put_contents(".htaccess", $newHtaccessContents, FILE_APPEND);							
+						} else {
+							$aiHtaccessContents = file_get_contents($aiHtaccessFile);
+							file_put_contents(".htaccess", $aiHtaccessContents, FILE_APPEND);							
+						}
+					} // !preg_match("/Adaptive-Images/", $htaccessContents)
+				}
+			}
+		} else {
+			$this->params->set('adaptiveImages', 0); //reset the adaptive images option to OFF in the template styles
+		}
+		file_put_contents("ai.debug.txt", $aiDubug);
 	}
 }
 /* ========================================================================= */
