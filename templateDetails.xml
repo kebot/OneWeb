@@ -8,7 +8,7 @@
 	<authorUrl>http://kisswebdesign.co.uk</authorUrl>
 	<copyright>Copyright (C) 2012 Chris Jones-Gill | KISS Web Design | All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later</license>
-	<version>0.2</version>	
+	<version>0.3</version>	
 	<description><![CDATA[
 	<p>This is a responsive, 'mobile first' HTML5 template from <a href="http://kisswebdesign.co.uk">KISS Web Design</a>.</p><p>It incorporates the hard work of many talented people. It was forked from <a href="https://github.com/nternetinspired/OneWeb">OneWeb Project on GitHub</a>.</p><p>I have taken that a great baseline for building this template, adding my own bits along the way.</p><p>Thanks goes to those who went before me:<br />Notably, this template takes the HTML5 goodness and awesome polyfills from the <a href="http://html5boilerplate.com/">HTML5 Boilerplate</a> of Paul Irish.<br />The mobile first logic and sexy typographic basics from <a href="http://www.stuffandnonsense.co.uk/projects/320andup/">320 and up</a> by Andy Clarke.<br />Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' <a href="http://construct-framework.com/">Construct Framework</a>.<br /> The fluid <a href="http://cssgrid.net/">1140px Grid</a> grid from Andy Taylor.<br />The <a href="http://unstoppablerobotninja.com/entry/fluid-images/">Fluid Images</a> script from Ethan Marcotte<br />And especially the work of Seth Warburton @nternetinspired <a href="http://internet-inspired.com">Internet Inspired!</a> for pulling it all together, adding his own flair and creating the original OneWeb template.</p>
 	]]></description>
@@ -19,9 +19,7 @@
         <filename>template_preview.png</filename>
         <filename>template_thumbnail.png</filename>
         <filename>adaptive-images.php</filename>
-        <filename>ai.htaccess</filename>
-        <filename>ai.htaccess.README.txt</filename>
-        <filename>ai-instructions.htm</filename>
+        <filename>ai.htaccess.joomla2.5</filename>
         <filename>BSD-licence.txt</filename>
         <filename>CreativeCommons-by-sa-3.0.txt</filename>
         <filename>gpl-2.0.txt</filename>
