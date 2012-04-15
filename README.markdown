@@ -16,6 +16,10 @@ Some really neat Joomla! tricks and Google Font awesomeness from Matt Thomas' Co
  * [http://construct-framework.com](http://construct-framework.com "Link to the Construct Framework site")  
 The fluid 1140px Grid from Andy Taylor.  
  * [http://cssgrid.net](http://cssgrid.net "Link to the fluid 1140 grid site")  
+The Fluid Images script from Ethan Marcotte.  
+ * [http://unstoppablerobotninja.com/entry/fluid-images/](http://unstoppablerobotninja.com/entry/fluid-images/ "Link to the Fluid Images site")  
+The Adaptive Images solution from Matt Wilcox.  
+ * [https://github.com/MattWilcox/Adaptive-Images](https://github.com/MattWilcox/Adaptive-Images "Link to the Adaptive Images Project")
 And especially the work of Seth Warburton at Internet Inspired! [@nternetinspired](https://twitter.com/nternetinspired "Twitter link for Seth Warburton") for pulling it all together, adding his own flair and creating the original OneWeb template.   
  * [http://internet-inspired.com](http://internet-inspired.com "Link to the internet-inspired site")  
   
@@ -63,6 +67,16 @@ FEATURES
  * Logo upload and select
  * Selectable module widths, or auto-set based on the active modules
  * Media queries for device screen sizes - 480, 600, 768, 992, 1382
+ * Adaptive Images option to create cached images for device screen sizes to reduce bandwidth for smaller screen resolutions, complementing fluid image solutions.
+ 	+ When enabled it creates or appends to the .htaccess file, if the .htaccess file does not exist the default joomla htaccess.txt file is used, with the JOOMLA SEF funionality commented out.
+	+ Only works on Apache Web Servers
+	+ files created in the web root are
+		- aidone.txt, created the first time the script runs
+		- aidebug.txt, debug info
+		- adaptive-images.php, copied from the template directory to the webroot
+		- .htaccess, either a new file, a new file based on htaccess.txt or appending to an existing .htaccess file
+		- Undoing the Adaptive Images option requires manually editing and removing files
+ * Fluid Images script to allow nice and smooth dynamic image re-sizing in the browser for IE7 and IE8 - because they're special!
  * Media query for high density mobile displays (eg iPhone 4) - min-device-pixel-ratio: 1.5
  * Small screensize optimization of the top menu (inserts a button to toggle the viewable menu on/off)
  * Selectable debug mode - Set screen output to put all active module positions into a 1px black box, plus a list of module status and columns assigned per module position at the bottom of the page
@@ -158,3 +172,5 @@ Some parts are public domain, and as such have no licence restrictions.
 	- css/social-dark.css
 	- css/social-light.css
 	- js/mylibs/imgSizer.js
+	- adaptive-images.php
+	- ai.htaccess.joomla2.5
