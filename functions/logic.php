@@ -288,50 +288,71 @@ $googleWebFontTargets3	= $this->params->get('googleWebFontTargets3');
 /* ========================================================================= */
 /* Adaptive Images check & setup                                             */
 /* ========================================================================= */
-if(!isset($aiDone)) {
-	$aiDubug = "!isset($aiDone)\n";
+if(!file_exists("aidone.txt")) {
+	$aiDubug = "!file_exists('aidone.txt') -- File does not exist, carry on\n";
 	if($adaptiveImages) {
-		$aiDubug .= "!$adaptiveImages\n";
-		global $aiDone; // define a global flag so that this only runs once
-		$aiDone = TRUE;
-		if(preg_match("/Apache/", phpinfo())) { // this only works on Apache servers
-		$aiDubug .= "preg_match('/Apache/', phpinfo())\n";
+		$aiDubug .= "\$adaptiveImages -- flag set to true, carry on\n";
+		ob_start();
+		phpinfo();
+		$phpinfo = ob_get_contents();
+		ob_end_clean();
+		if(preg_match("/Apache/", $phpinfo)) { // this only works on Apache servers
+		$aiDubug .= "preg_match('/Apache/', phpinfo()) -- Apache Found, carry on\n";
 			if(!file_exists("adaptive-images.php")) {
-				$aiDubug .= "!file_exists('adaptive-images.php')\n";
-				$aiFile = $template . "adaptive-images.php";
-				$aiHtaccessFile = $template . "ai.htaccess.joomla2.5";
+				$aiDubug .= "!file_exists('adaptive-images.php') -- File does not exist, carry on\n";
+				$aiFile = $template . "/adaptive-images.php";
+				$aiHtaccessFile = $template . "/ai.htaccess.joomla2.5";
 				copy($aiFile, "adaptive-images.php");
-				$aiDubug .= "copy($aiFile, 'adaptive-images.php')\n";
+				$aiDubug .= "copy($aiFile, 'adaptive-images.php') -- Copy file to web root\n";
 				if(!file_exists(".htaccess")) {
-					$aiDubug .= "!file_exists('.htaccess')\n";
-					//chmod htaccess.txt to 644
-					// check for htaccess.txt, even though it should be there we have to check
+					$aiDubug .= "!file_exists('.htaccess') -- File Does not exist, carry on\n";
 					if(file_exists("htaccess.txt")) {
-						copy("htaccess.txt", ".htaccess"); // Joomla installs htaccess.txt by default, with Joomla SEF stuff in it
-						file_put_contents(".htaccess", file_get_contents($aiHtaccessFile), FILE_APPEND); // Add the Adaptive Images rules to the end of the file							
+						$aiDubug .= "file_exists('htaccess.txt') -- File exists, carry on\n";
+						$htaccessContents = file_get_contents("htaccess.txt"); //TODO add some error traps
+						//run through each line and put a '#DELETE the 2 hashes and this text to activate the JOOMLA SEF#' at the start, so that the Joomla SEF stuff is not used
+						$addComments = explode("\n", $htaccessContents); //create array separate by new line
+						for ($i=0;$i<count($addComments);$i++) 
+						{
+    						$newHtaccessContents .= "#DELETE the 2 hashes and this text to activate the JOOMLA SEF# ".$addComments[$i]."\n";
+						}
+						$aiDubug .= $i . " lines of the htaccess file commented out.\n ";
+						$newHtaccessContents .= "# WARNING - if activating the JOOMLA SEF above, you MUST remove the following 3 lines and the next </IfModule> line!\n";
+						$newHtaccessContents .= "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n"; // Add the Adaptive Images rules to the end of the string
+						file_put_contents(".htaccess", $newHtaccessContents); // Create the file
 					} else {
+						$aiDubug .= "file_exists('htaccess.txt') -- File does not exists, carry on\n";
 						$newHtaccessContents = "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n";
 						file_put_contents(".htaccess", $newHtaccessContents); // create a new .htaccess file, no default Joomla bits in it
 					}
+					$aiDubug .= ".htaccess file written\n";
 				} else {
-					// file_exists(".htaccess")
-					$htaccessContents = file_get_contents(".htaccess"); // TODO add some error traps too
+					$aiDubug("file_exists('.htaccess') -- File exists, carry on\n");
+					$htaccessContents = file_get_contents(".htaccess"); // TODO add some error traps
 					if(!preg_match("/Adaptive-Images/", $htaccessContents)) {
+						$aiDubug("Adaptive-Images not found in .htaccess\n");
 						if(!preg_match("/RewriteEngine On/", $htaccessContents)) {
+							$aiDubug("RewriteEngine On not found in .htaccess\n");
 							$newHtaccessContents = "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n";
 							file_put_contents(".htaccess", $newHtaccessContents, FILE_APPEND);							
 						} else {
+							$aiDubug("RewriteEgine on found in .htaccess\n");
 							$aiHtaccessContents = file_get_contents($aiHtaccessFile);
 							file_put_contents(".htaccess", $aiHtaccessContents, FILE_APPEND);							
 						}
+						$aiDubug("Adaptive Images conditions written to .htaccess\n");
 					} // !preg_match("/Adaptive-Images/", $htaccessContents)
 				}
 			}
 		} else {
+			$aiDubug .= "preg_match('/Apache/', phpinfo()) -- Apache not found can't use adaptive images\n";
 			$this->params->set('adaptiveImages', 0); //reset the adaptive images option to OFF in the template styles
 		}
-		file_put_contents("ai.debug.txt", $aiDubug);
 	}
+	file_put_contents("aidone.txt", "yes");
+	$aiDubug .= ("file aidone.txt written\n");
+	file_put_contents("ai.debug.txt", $aiDubug);
+} else {
+	file_put_contents("ai.debug.txt", "aidone.txt found, no further action required\n");
 }
 /* ========================================================================= */
 /* End of Adaptive Images check & setup                                      */
