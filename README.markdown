@@ -130,8 +130,7 @@ Contributing
   
  * If you want to contribute please feel free to do so. There are many ways to help:
  	+ Raise an issue on github [https://github.com/KISS-Web-Design/KWD\_Joomla\_OneWeb/issues](https://github.com/KISS-Web-Design/KWD_Joomla_OneWeb/issues "Link to the issues page of the project on Github")
- 	+ Sending pull requests for bug fixes or new features and improvements.
- 	+ Send me a message via github [https://github.com/KISS-Web-Design](https://github.com/KISS-Web-Design "Link to the KISS Web Design page on Github") with ideas/improvements/etc.		
+ 	+ Sending pull requests for bug fixes or new features and improvements.    
   
 Project Information
 ===================
