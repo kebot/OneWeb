@@ -1,20 +1,103 @@
 <?php defined('_JEXEC') or die;
 /* =====================================================================
-Template:	OneWeb for Joomla 2.5						            
-Author: 	Seth Warburton - Internet Inspired! - @nternetinspired 				            
-Version: 	1.0 											             
-Created: 	Dec 2011                                                    
-Copyright:	Seth Warburton - (C) 2011 - All rights reserved
-Sources:	http://construct-framework.com/				         					         
-License: 	GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+ * Template:		KWD_Joomla_OneWeb :: for Joomla! 2.5
+ * Author: 			Chris Jones-Gill - KISS Web Design
+ * Version: 		0.2
+ * Created: 		March 2012
+ * This Version:	April 2012
+ * Copyright:		KISS Web Design - (C) 2012 - All rights reserved
+ * License:	GNU/GPL v2 or later http://www.gnu.org/licenses/gpl-2.0.html
+ * Sources:	Forked from https://github.com/nternetinspired/OneWeb 12/3/2012
+ * 			http://construct-framework.com/
+ * 			https://github.com/MattWilcox/Adaptive-Images
 /* ===================================================================== */
+
+/* =====================================================================
+ * Function:	int_to_words($x)
+ * Purpose:	To turn integers into words
+ * Version:	1.0
+ * Added:		March 13 2012
+ * Author:		Chris Jones-Gill - KISS Web Design
+ * Source:		Unknown, added to 'my useful php functions' around 2005
+ * Usage:
+ * 	<?php
+ * 		$count = 9;
+ * 		echo 'The integer ' . $count .  ' is ' . int_to_words($count) . ' in written English Text';
+ * 	?>
+ * Output:
+ * The integer 9 is nine in written English Text
+ * Why it is included here:
+ * 		To enable us to calculate the number of columns for each module
+ * 		position enabled automatically, if selected in the template Admin.
+ * 		Then convert the integer calculated into text for use in the 
+ * 		HTML output, so that the element can be styled correctly in CSS
+/* ===================================================================== */
+function int_to_words($x) {
+
+$nwords = array( "zero", "one", "two", "three", "four", "five", "six", "seven",
+                   "eight", "nine", "ten", "eleven", "twelve", "thirteen",
+                   "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
+                   "nineteen", "twenty", 30 => "thirty", 40 => "forty",
+                   50 => "fifty", 60 => "sixty", 70 => "seventy", 80 => "eighty",
+                   90 => "ninety" );
+
+   if(!is_numeric($x))
+      $w = '#';
+   else if(fmod($x, 1) != 0)
+      $w = '#';
+   else {
+      if($x < 0) {
+         $w = 'minus ';
+         $x = -$x;
+      } else
+         $w = '';
+         
+      // ... now $x is a non-negative integer.
+
+      if($x < 21)   // 0 to 20
+         $w .= $nwords[$x];
+      else if($x < 100) {   // 21 to 99
+         $w .= $nwords[10 * floor($x/10)];
+         $r = fmod($x, 10);
+         if($r > 0)
+            $w .= '-'. $nwords[$r];
+      } else if($x < 1000) {   // 100 to 999
+         $w .= $nwords[floor($x/100)] .' hundred';
+         $r = fmod($x, 100);
+         if($r > 0)
+            $w .= ' and '. int_to_words($r);
+      } else if($x < 1000000) {   // 1000 to 999999
+         $w .= int_to_words(floor($x/1000)) .' thousand';
+         $r = fmod($x, 1000);
+         if($r > 0) {
+            $w .= ' ';
+            if($r < 100)
+               $w .= 'and ';
+            $w .= int_to_words($r);
+         }
+      } else {    //  millions
+         $w .= int_to_words(floor($x/1000000)) .' million';
+         $r = fmod($x, 1000000);
+         if($r > 0) {
+            $w .= ' ';
+            if($r < 100)
+               $word .= 'and ';
+            $w .= int_to_words($r);
+         }
+      }
+   }
+	return $w;
+}
+/* End of int_to_words() */
 
 // Define shortcuts for template parameters
 $loadMoo 				= $this->params->get('loadMoo');
 $jQuery 				= $this->params->get('jQuery');
+$adaptiveImages			= $this->params->get('adaptiveImages');
 $setGeneratorTag		= $this->params->get('setGeneratorTag');
 $analytics 				= $this->params->get('analytics');
-
+// Get the site logo filename
+$SiteLogo				= $this->params->get('SiteLogo');
 #-----------------------------Lets get the info we need for the grid-----------------------------#
 // Check for modules in columns
 // from http://groups.google.com/group/joomla-dev-general/bse_thread/thread/b54f3f131dd173d
@@ -24,6 +107,8 @@ $mobileMenu = (int) ($this->countModules('mobile-menu') > 0);
 $search = (int) ($this->countModules('search') > 0);
 $tagline = (int) ($this->countModules('tagline') > 0);
 $breadcrumbs = (int) ($this->countModules('breadcrumbs') > 0);
+
+$bigtop = (int) ($this->countModules('bigtop') > 0);
 
 $banner1 = (int) ($this->countModules('banner1') > 0);
 $banner2 = (int) ($this->countModules('banner2') > 0);
@@ -52,50 +137,123 @@ $footer2 = (int) ($this->countModules('footer2') > 0);
 $footer3 = (int) ($this->countModules('footer3') > 0);
 $footer4 = (int) ($this->countModules('footer4') > 0);
 
-// Get the column widths	
-$logoCols = $this->params->get('logo', 'three');
-$taglineCols = $this->params->get('tagline', 'nine');
-$searchCols = $this->params->get('search', 'three');
+/* =====================================================================
+ * Get the column widths
+ * Alteration of original code
+ * Purpose:		Add column width calculations and override theme defaults
+ * Added:		March 13 2012
+ * Author:		Chris Jones-Gill - KISS Web Design
+/* ===================================================================== */
 
-$banner1Cols = $this->params->get('banner1', 'six');
-$banner2Cols = $this->params->get('banner2', 'six');
+$logoCols = $this->params->get('logo');
+$taglineCols = $this->params->get('tagline');
+$searchCols = $this->params->get('search');
 
-$above1Cols = $this->params->get('above1', 'three');
-$above2Cols = $this->params->get('above2', 'three');
-$above3Cols = $this->params->get('above3', 'three');
-$above4Cols = $this->params->get('above4', 'three');
+$banner1Cols = $this->params->get('banner1');
+$banner2Cols = $this->params->get('banner2');
 
-$leftCols = $this->params->get('left', 'three');
-$rightCols = $this->params->get('right', 'three');
-
-if (($right == "0") && ($left == "0")) {
-$mainCols = 'twelve';
+if ($this->params->get('CalculateAbove')) {
+	// Divide the total columns by the number of active modules
+	// Ensures the modules always fill the available width
+	// Overrides the values specified in the template style
+	if(($above1 + $above2 + $above3 + $above4) != 0) {$AboveCols = int_to_words(12/($above1 + $above2 + $above3 + $above4));} else {$AboveCols = 0;}
+	$above1Cols = $this->params->set('above1', $AboveCols);
+	$above2Cols = $this->params->set('above2', $AboveCols);
+	$above3Cols = $this->params->set('above3', $AboveCols);
+	$above4Cols = $this->params->set('above4', $AboveCols);
 }
 else {
-	$mainCols = $this->params->get('main', 'nine');
+	// Use the values specified in the template style
+	$above1Cols = $this->params->get('above1');
+	$above2Cols = $this->params->get('above2');
+	$above3Cols = $this->params->get('above3');
+	$above4Cols = $this->params->get('above4');
 }
 
-$below1Cols = $this->params->get('below1', 'three');
-$below2Cols = $this->params->get('below2', 'three');
-$below3Cols = $this->params->get('below3', 'three');
-$below4Cols = $this->params->get('below4', 'three');
+if ($this->params->get('CalculateMain')) {
+	$leftCols = $this->params->set('left', 'three');
+	$rightCols = $this->params->set('right', 'three');
+	if (($right == "0") && ($left == "0")) {
+		$mainCols = $this->params->set('main', 'twelve');
+	}
+	else if (($right != "0") && ($left !="0")){
+		$mainCols = $this->params->set('main', 'six');
+	}
+	else if (($right == "0") || ($left == "0")) {
+		$mainCols = $this->params->set('main', 'nine');
+	}
+}
+else {
+	// Use the values specified in the template style
+	$leftCols = $this->params->get('left');
+	$mainCols = $this->params->get('main');
+	$rightCols = $this->params->get('right');
+}
 
-$bottom1Cols = $this->params->get('bottom1', 'three');
-$bottom2Cols = $this->params->get('bottom2', 'three');
-$bottom3Cols = $this->params->get('bottom3', 'three');
-$bottom4Cols = $this->params->get('bottom4', 'three');
+if ($this->params->get('CalculateBelow')) {
+	// Divide the total columns by the number of active modules
+	// Ensures the modules always fill the available width
+	// Overrides the values specified in the template style
+	if(($below1 + $below2 + $below3 + $below4) != 0) {$BelowCols = int_to_words(12/($below1 + $below2 + $below3 + $below4));} else {$BelowCols = 0;}
+	$below1Cols = $this->params->set('below1', $BelowCols);
+	$below2Cols = $this->params->set('below2', $BelowCols);
+	$below3Cols = $this->params->set('below3', $BelowCols);
+	$below4Cols = $this->params->set('below4', $BelowCols);
+}
+else {
+	// Use the values specified in the template style
+	$below1Cols = $this->params->get('below1');
+	$below2Cols = $this->params->get('below2');
+	$below3Cols = $this->params->get('below3');
+	$below4Cols = $this->params->get('below4');
+}
 
-$footer1Cols = $this->params->get('footer1', 'three');
-$footer2Cols = $this->params->get('footer2', 'three');
-$footer3Cols = $this->params->get('footer3', 'three');
-$footer4Cols = $this->params->get('footer4', 'three');
-	
-// Calculate the number of modules published in a positon
+if ($this->params->get('CalculateBottom')) {
+	// Divide the total columns by the number of active modules
+	// Ensures the modules always fill the available width
+	// Overrides the values specified in the template style
+	if(($bottom1 + $bottom2 + $bottom3 + $bottom4) != 0) {$BottomCols = int_to_words(12/($bottom1 + $bottom2 + $bottom3 + $bottom4));} else {$BottomCols = 0;}
+	$bottom1Cols = $this->params->set('bottom1', $BottomCols);
+	$bottom2Cols = $this->params->set('bottom2', $BottomCols);
+	$bottom3Cols = $this->params->set('bottom3', $BottomCols);
+	$bottom4Cols = $this->params->set('bottom4', $BottomCols);
+}
+else {
+	// Use the values specified in the template style
+	$bottom1Cols = $this->params->get('bottom1');
+	$bottom2Cols = $this->params->get('bottom2');
+	$bottom3Cols = $this->params->get('bottom3');
+	$bottom4Cols = $this->params->get('bottom4');
+}
+
+if ($this->params->get('CalculateFooter')) {
+	// Divide the total columns by the number of active modules
+	// Ensures the modules always fill the available width
+	// Overrides the values specified in the template style
+	if(($footer1 + $footer2 + $footer3 + $footer4) != 0) {$FooterCols = int_to_words(12/($footer1 + $footer2 + $footer3 + $footer4));} else {$FooterCols = 0;}
+	$footer1Cols = $this->params->set('footer1', $FooterCols);
+	$footer2Cols = $this->params->set('footer2', $FooterCols);
+	$footer3Cols = $this->params->set('footer3', $FooterCols);
+	$footer4Cols = $this->params->set('footer4', $FooterCols);
+}
+else {
+	$footer1Cols = $this->params->get('footer1');
+	$footer2Cols = $this->params->get('footer2');
+	$footer3Cols = $this->params->get('footer3');
+	$footer4Cols = $this->params->get('footer4');
+}	
+
+// Calculate the number of modules published in a position
+// Used in template index.php file to activate (>0) or ignore (=0) the row
 $bannerModules = $banner1 + $banner2;
 $aboveModules = $above1 + $above2 + $above3 + $above4;
 $belowModules = $below1 + $below2 + $below3 + $below4;
 $bottomModules = $bottom1 + $bottom2 + $bottom3 + $bottom4;
 $footerModules = $footer1 + $footer2 + $footer3 + $footer4;
+
+/* =====================================================================
+ * 	End of column width settings
+/* ===================================================================== */
 
 #-----------------------------See if we are on the homepage-----------------------------#
 // from Anthony Olsen of Joomla Bamboo, http://www.joomlabamboo.com
@@ -126,6 +284,83 @@ $googleWebFontTargets2	= $this->params->get('googleWebFontTargets2');
 $googleWebFont3			= $this->params->get('googleWebFont3');
 $googleWebFontSize3		= $this->params->get('googleWebFontSize3');
 $googleWebFontTargets3	= $this->params->get('googleWebFontTargets3');
+
+/* ========================================================================= */
+/* Adaptive Images check & setup                                             */
+/* ========================================================================= */
+if(!file_exists("aidone.txt")) {
+	$aiDebug = "!file_exists('aidone.txt') -- File does not exist, carry on\n";
+	if($adaptiveImages) {
+		$aiDebug .= "\$adaptiveImages -- flag set to true, carry on\n";
+		ob_start();
+		phpinfo();
+		$phpinfo = ob_get_contents();
+		ob_end_clean();
+		if(preg_match("/Apache/", $phpinfo)) { // this only works on Apache servers
+		$aiDebug .= "preg_match('/Apache/', phpinfo()) -- Apache Found, carry on\n";
+			if(!file_exists("adaptive-images.php")) {
+				$aiDebug .= "!file_exists('adaptive-images.php') -- File does not exist, carry on\n";
+				$aiFile = $template . "/adaptive-images.php";
+				$aiHtaccessFile = $template . "/ai.htaccess.joomla2.5";
+				copy($aiFile, "adaptive-images.php");
+				$aiDebug .= "copy($aiFile, 'adaptive-images.php') -- Copy file to web root\n";
+				if(!file_exists(".htaccess")) {
+					$aiDebug .= "!file_exists('.htaccess') -- File Does not exist, carry on\n";
+					if(file_exists("htaccess.txt")) {
+						$aiDebug .= "file_exists('htaccess.txt') -- File exists, carry on\n";
+						$htaccessContents = file_get_contents("htaccess.txt"); //TODO add some error traps
+						//run through each line and put a '#DELETE the 2 hashes and this text to activate the JOOMLA SEF#' at the start, so that the Joomla SEF stuff is not used
+						$addComments = explode("\n", $htaccessContents); //create array separate by new line
+						for ($i=0;$i<count($addComments);$i++) 
+						{
+    						$newHtaccessContents .= "#DELETE the 2 hashes and this text to activate the JOOMLA SEF# ".$addComments[$i]."\n";
+						}
+						$aiDebug .= $i . " lines of the htaccess file commented out.\n ";
+						$newHtaccessContents .= "# WARNING - if activating the JOOMLA SEF above, you MUST remove the following 3 lines and the next </IfModule> line!\n";
+						$newHtaccessContents .= "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n"; // Add the Adaptive Images rules to the end of the string
+						file_put_contents(".htaccess", $newHtaccessContents); // Create the file
+					} else {
+						$aiDebug .= "file_exists('htaccess.txt') -- File does not exists, carry on\n";
+						$newHtaccessContents = "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n";
+						file_put_contents(".htaccess", $newHtaccessContents); // create a new .htaccess file, no default Joomla bits in it
+					}
+					$aiDebug .= ".htaccess file written\n";
+				} else {
+					$aiDebug("file_exists('.htaccess') -- File exists, carry on\n");
+					$htaccessContents = file_get_contents(".htaccess"); // TODO add some error traps
+					if(!preg_match("/Adaptive-Images/", $htaccessContents)) {
+						$aiDebug("Adaptive-Images not found in .htaccess\n");
+						if(!preg_match("/RewriteEngine On/", $htaccessContents)) {
+							$aiDebug("RewriteEngine On not found in .htaccess\n");
+							$newHtaccessContents = "<IfModule mod_rewrite.c>\nOptions +FollowSymlinks\nRewriteEngine On\n\n" . file_get_contents($aiHtaccessFile) . "\n</IfModule>\n";
+							file_put_contents(".htaccess", $newHtaccessContents, FILE_APPEND);							
+						} else {
+							$aiDebug("RewriteEgine on found in .htaccess\n");
+							$aiHtaccessContents = file_get_contents($aiHtaccessFile);
+							file_put_contents(".htaccess", $aiHtaccessContents, FILE_APPEND);							
+						}
+						$aiDebug("Adaptive Images conditions written to .htaccess\n");
+					} // !preg_match("/Adaptive-Images/", $htaccessContents)
+				}
+			}
+		} else {
+			$aiDebug .= "preg_match('/Apache/', phpinfo()) -- Apache not found can't use adaptive images\n";
+			$this->params->set('adaptiveImages', 0); //reset the adaptive images option to OFF in the template styles
+		}
+		file_put_contents("aidone.txt", "yes");
+		$aiDebug .= ("file aidone.txt written\n");
+	} else {
+		$aiDebug .= ("Adaptive Images not selected - end\n");
+	}
+	file_put_contents("ai.debug.txt", $aiDebug);
+} else {
+	file_put_contents("ai.debug.txt", "aidone.txt found, no further action required\n");
+}
+/* ========================================================================= */
+/* End of Adaptive Images check & setup                                      */
+/* ========================================================================= */
+
+
 
 // Change generator tag
 $this->setGenerator($setGeneratorTag);
@@ -179,6 +414,15 @@ $doc->addCustomTag('<link href="'.$template.'/img/large/apple-touch-icon.png" re
 // Style sheets
 $doc->addStyleSheet($template.'/css/style.css');
 
+if ($this->params->get('SocialDarkGlyphFont')) {
+	$doc->addStyleSheet($template.'/css/social-dark.css');
+}
+if ($this->params->get('SocialLightGlyphFont')) {
+	$doc->addStyleSheet($template.'/css/social-light.css');
+}
+if ($this->params->get('GeneralWebsiteGlyphFont')) {
+	$doc->addStyleSheet($template.'/css/general-website.css');
+}
 // Metas
 $doc->setMetaData( 'HandheldFriendly', 'True' );
 $doc->setMetaData( 'MobileOptimized', '320' );

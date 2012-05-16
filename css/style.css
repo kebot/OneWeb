@@ -1,14 +1,15 @@
 /* =====================================================================
-Template:	OneWeb for Joomla 2.5						            
-Author: 	Seth Warburton - Internet Inspired! - @nternetinspired 				            
-Version: 	0.2 											             
-Created: 	Dec 2011                                                    
-Copyright:	Seth Warburton - (C) 2011 - All rights reserved
-Sources:	http://cssgrid.net/
-			http://construct-framework.com/
-			http://html5boilerplate.com/
-			http://stuffandnonsense.co.uk/projects/320andup/						         
-License: 	http://creativecommons.org/licenses/MIT/
+ * Template:    KWD_Joomla_OneWeb :: for Joomla! 2.5
+ * Author:      Chris Jones-Gill - KISS Web Design
+ * Version:     0.1
+ * Created:     March 2012
+ * Copyright:   KISS Web Design - (C) 2012 - All rights reserved
+ * License:     http://creativecommons.org/licenses/MIT/
+ * Sources:     Forked from https://github.com/nternetinspired/OneWeb 12/3/2012
+ *              http://cssgrid.net/
+ *              http://html5boilerplate.com/
+ *              http://stuffandnonsense.co.uk/projects/320andup/
+ *              http://construct-framework.com/
 /* ===================================================================== */
 
 /*
@@ -121,6 +122,8 @@ video {
     *zoom: 1;
 }
 /* 1 ROOT 					============================================================================= */
+/* Setting font-size to 62.5% makes it the equivalent of 10px, therefore using font sizes in rem units    */
+/* gives an easy conversion to px sizes, ie 1.0rem = 10px, 1.4rem = 14px, etc.                            */
 html {
     overflow-y: scroll;
     background: #fff;
@@ -147,7 +150,7 @@ textarea {
 }
 /* 2 GRID	 				============================================================================= */
 .container { padding: 0 1em;}
-.row {padding: 2em 0;}
+.row {padding: 1em 0;}
 /* 3 HEADINGS 				============================================================================= */
 h1,
 h2,
@@ -537,10 +540,8 @@ box-shadow : none; }
 	padding-bottom:0;
 }
 #logo {
-	background: url(../img/small/small-logo.png) scroll no-repeat;
-	height:100px;
-	width:200px;
-	margin:0 auto 2em;
+    margin-right: 0;
+    max-width: 200px;
 }
 #logo a {
 	text-decoration: none;
@@ -588,6 +589,8 @@ input[type="search"], .search label {
 	
 #breadcrumbs {
 	color:#999;
+}
+#bigtop {
 }
 /* article navigation */
 ul.pagenav,
@@ -787,6 +790,9 @@ header .row {border: 0}
 #breadcrumbRow .row {
 	padding: .5em .25em;
 }
+#BigTopRow .row {
+    padding: .5em .25em;
+}
 /* 21 MEDIA QUERIES 		============================================================================= */
 
 @media print {
@@ -904,6 +910,9 @@ tr {
 /* 7 TABLES 				============================================================================= */
 /* 8 FORMS 					============================================================================= */
 /* 9 LOGO	 				============================================================================= */
+#logo {
+    max-width: 325px;
+}
 /* 10 NAVIGATION			============================================================================= */
 /* 11 BANNER 				============================================================================= */
 /* 12 CONTENT 				============================================================================= */
@@ -940,7 +949,6 @@ body {
 .container { padding: 0 2em }
 .row {
 	margin: 0 auto;
-	padding: 3em .25em;
 	overflow: hidden;
 	max-width:1140px;
 }
@@ -992,10 +1000,8 @@ a:active {
 /* 8 FORMS 					============================================================================= */
 /* 9 LOGO	 				============================================================================= */
 #logo {
-	background: url(../img/medium/medium-logo.png) scroll no-repeat;
-	height:200px;
-	width:300px;
-	margin:0 0 2em;
+    max-width: 100%;
+    min-width: 325px;
 }
 /* 10 NAVIGATION			============================================================================= */
 #navRow .row {
@@ -1057,11 +1063,6 @@ nav ul.menu li a {
 /* 7 TABLES 				============================================================================= */
 /* 8 FORMS 					============================================================================= */
 /* 9 LOGO	 				============================================================================= */
-#logo {
-	background: url(../img/large/large-logo.png) scroll no-repeat;
-	height:200px;
-	width:400px;
-}
 /* 10 NAVIGATION			============================================================================= */
 /* 11 BANNER 				============================================================================= */
 /* 12 CONTENT 				============================================================================= */
